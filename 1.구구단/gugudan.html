@@ -10,12 +10,11 @@
   <body>
     <div id="root">
       <div>{{first}} 곱하기 {{second}}는?</div>
-      <form>
-        <input type="number" v-model="value" />
+      <form v-on:submit="onSubmitForm">
+        <input type="number" ref="answer" v-model="value" />
         <button type="submit">입력</button>
       </form>
-      <div v-if="result">정답</div>
-      <div v-else>땡</div>
+      <div>{{result}}</div>
     </div>
     <script>
       const app = new Vue({
@@ -24,9 +23,24 @@
           first: Math.ceil(Math.random() * 9),
           second: Math.ceil(Math.random() * 9),
           value: "",
-          result: false,
+          result: "",
         },
-        methods: {},
+        methods: {
+          onSubmitForm(e) {
+            e.preventDefault();
+            console.log(this, this.first, this.second, this.value);
+            if (this.first * this.second === parseInt(this.value)) {
+              this.result = "정답";
+              this.first = Math.ceil(Math.random() * 9);
+              this.second = Math.ceil(Math.random() * 9);
+              this.value = "";
+            } else {
+              this.result = "땡";
+              this.value = "";
+            }
+            this.$refs.answer.focus();
+          },
+        },
       });
     </script>
   </body>
