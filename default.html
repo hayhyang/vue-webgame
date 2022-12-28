@@ -5,24 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>좋아요 버튼</title>
+    <title>Document</title>
   </head>
   <body>
-    <div id="root">
-      <div v-if="liked">좋아요 눌렀음</div>
-      <button v-else v-on:click="onClickButton">Like</button>
-    </div>
+    <div id="root"></div>
     <script>
-      var app = new Vue({
+      const app = new Vue({
         el: "#root",
-        data: {
-          liked: false,
-        },
-        methods: {
-          onClickButton() {
-            this.liked = true;
-          },
-        },
+        data: {},
+        methods: {},
       });
     </script>
   </body>
